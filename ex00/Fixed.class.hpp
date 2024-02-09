@@ -18,14 +18,16 @@
 class Fixed {
 public:
     Fixed();
-    Fixed(Fixed const & ????);
+    Fixed(Fixed const &src);
     ~Fixed(); //virtual ??
     int getRawBits() const;
     void setRawBits(int const raw);
-    Fixed& operator=(Fixed const & ????);
+    Fixed &operator=(Fixed const &rhs);
 private:
     int _fixed_coma_int;
     static const int _bits;
 };
+
+
 
 #endif

@@ -14,17 +14,29 @@
 
 Fixed::Fixed() {
     this->_fixed_coma_int = 0;
-    std::cout << "constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(Fixed const &src) {
+    this->_fixed_coma_int = src.getRawBits();
 }
 
 Fixed::~Fixed() {
-    std::cout << "destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const {
+    std::cout << "getRawBits member fonction called" << std::endl;
     return this->_fixed_coma_int;    
 }
 
 void Fixed::setRawBits(int const raw) {
+    std::cout << "setRawBits member fonction called" << std::endl;
     this->_fixed_coma_int = raw;
+}
+
+Fixed &Fixed::operator=(Fixed const &rhs) {
+    std::cout << "Copy assigment operator called" << std::endl;
+    this->_fixed_coma_int = rhs.getRawBits();
+    return (*this);
 }

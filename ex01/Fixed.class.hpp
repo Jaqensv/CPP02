@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.class.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/13 17:55:40 by mde-lang          #+#    #+#             */
+/*   Updated: 2024/02/13 18:04:24 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FIXED_CLASS_HPP
 # define FIXED_CLASS_HPP
@@ -22,7 +32,7 @@ public:
 
 private:
     int _fixed_coma_int;
-    static const int _bits;
+    static const int _bits = 8;
 };
 
 std::ostream & operator<<(std::ostream & o, Fixed const & rhs);

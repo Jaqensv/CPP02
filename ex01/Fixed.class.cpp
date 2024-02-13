@@ -1,8 +1,16 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.class.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/13 17:55:52 by mde-lang          #+#    #+#             */
+/*   Updated: 2024/02/13 19:05:06 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Fixed.class.hpp"
-
-const int Fixed::_bits = 8;
 
 Fixed::Fixed() {
     this->_fixed_coma_int = 0;
@@ -10,17 +18,18 @@ Fixed::Fixed() {
 }
 
 Fixed::Fixed(const int i) {
-
-
+    this->_fixed_coma_int = i * static_cast<int>(pow(2, this->_bits));
+    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float f) {
-
-
+    this->_fixed_coma_int = roundf(f * pow(2, this->_bits));
+    std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(Fixed const &src) {
-    this->_fixed_coma_int = src.getRawBits();
+    *this = src;
+    std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::~Fixed() {
@@ -28,12 +37,10 @@ Fixed::~Fixed() {
 }
 
 int Fixed::getRawBits() const {
-    std::cout << "getRawBits member fonction called" << std::endl;
     return this->_fixed_coma_int;    
 }
 
 void Fixed::setRawBits(int const raw) {
-    std::cout << "setRawBits member fonction called" << std::endl;
     this->_fixed_coma_int = raw;
 }
 
@@ -44,13 +51,13 @@ Fixed &Fixed::operator=(Fixed const &rhs) {
 }
 
 float Fixed::toFloat() const {
-
+    return (this->_fixed_coma_int / pow(2, this->_bits));
 }
 
 int Fixed::toInt() const {
-
+    return (this->_fixed_coma_int / static_cast<int>(pow(2, this->_bits)));
 }
 
 std::ostream &operator<<(std::ostream & o, Fixed const & rhs) {
-    return (o << rhs.getRawBits());
+    return (o << rhs.toFloat());
 }
